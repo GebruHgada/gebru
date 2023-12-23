@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.altraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master/masterlayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div>
+        <h1>List OF Organizations</h1>
+    </div>
+    <table class="table table-hover" id="supplier-table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Organization Name</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="organization:${organizations}">
+                <th th:text="${organization.id}"></th>
+                <td th:text="${organization.organizationName}"></td>
+                <td><a th:href="@{/organizations/delete/__${organization.id}__}" class="btn btn-outline-danger">Delete</a>
+                    <a th:href="@{/organizations/edit/__${organization.id}__}" class="btn btn-outline-warning">Update</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</th:block>
+
+<th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>

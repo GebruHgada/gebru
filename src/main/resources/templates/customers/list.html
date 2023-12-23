@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.altraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master/masterlayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div>
+        <h1>List of Customers</h1>
+    </div>
+    <table class="table table-hover" id="supplier-table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">serviceID</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Served ON </th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer:${customers}">
+            <th th:text="${customer.id}"></th>
+            <td th:text="${customer.customerName}"></td>
+            <td th:text="${customer.organizations.organizationName}"></td>
+            <td><a th:href="@{/customers/delete/__${customer.id}__}" class="btn btn-outline-danger">Delete</a>
+                <a th:href="@{/customers/edit/__${customer.id}__}" class="btn btn-outline-warning">Update</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+</th:block>
+
+<th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>
